@@ -2,9 +2,9 @@
 
  class ToDo extends Component { //Defomes a Class that Extends Component
     render() { //Defines a render() method on your class
-     return (  //this pulls in the desciption value from the array is apps.js into the list
+     return (  //this pulls in the desciption value from the array is apps.js into the list. Toggle Complete is the event listener now connected to the App.js data.
        <li>
-         <input type="checkbox" checked={ this.props.isCompleted } />
+         <input type="checkbox" checked={ this.props.isCompleted } onChange={this.props.toggleComplete} />
          <span>{ this.props.description }</span>
        </li>
      );
