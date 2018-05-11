@@ -17,6 +17,11 @@ class App extends Component {
      };
    }
 
+  deleteToDo(index) {
+    const newTodos = this.state.todos.filter( (todo) => todo !== this.state.todos[index] );
+    this.setState({todos: newTodos});
+   }
+
    handleChange(e) {
      this.setState({ newTodoDescription: e.target.value })
    }
@@ -42,14 +47,13 @@ class App extends Component {
       <div className="App">
          <ul>
          	{this.state.todos.map((todo, index) => //ES6 arrow function here calls the state above and iterates through the array
-         		<ToDo key={index} description={todo.description} toggleComplete={todo.isCompleted} toggleComplete={() => this.toggleComplete(index)}/> //with toggleComplete, this now can pass in the updated value appropriate item in the array
+         		<ToDo key={index} description={todo.description} toggleComplete={todo.isCompleted} toggleComplete={() => this.toggleComplete(index)} deleteToDo={ () => this.deleteToDo(index)} /> //with toggleComplete, this now can pass in the updated value appropriate item in the array
          		)}
         </ul>
        	   <form onSubmit={ (e) => this.handleSubmit(e) }>
            <input type="text" value={ this.state.newTodoDescription } onChange={ (e) => this.handleChange(e) } />
            <input type="submit" />
          </form>
-
       </div>
     );
   }
