@@ -2,8 +2,11 @@
 
  class ToDo extends Component { //Defomes a Class that Extends Component
     render() { //Defines a render() method on your class
-     return (
-       <li> A todo will go here </li>
+     return (  //this pulls in the desciption value from the array is apps.js into the list
+       <li>
+         <input type="checkbox" checked={ this.props.isCompleted } />
+         <span>{ this.props.description }</span>
+       </li>
      );
    }
  }
